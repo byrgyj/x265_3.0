@@ -4196,7 +4196,7 @@ int Encoder::getCUIndex(cuLocation* cuLoc, uint32_t* count, int bytes, int flag)
         {
             /* Number of 4x4 blocks in out of bound region */
             int outOfBound = m_param->maxCUSize / 2;
-            uint32_t sum = (uint32_t)pow((outOfBound >> 2), 2);
+            uint32_t sum = (uint32_t)pow((double)(outOfBound >> 2), 2);
             index += sum;
         }
         cuLoc->switchCondition += m_param->num4x4Partitions;
@@ -4223,7 +4223,7 @@ int Encoder::getCUIndex(cuLocation* cuLoc, uint32_t* count, int bytes, int flag)
             else
             {
                 int outOfBound = m_param->maxCUSize / 2;
-                uint32_t sum = (uint32_t)(2 * pow((abs(outOfBound) >> 2), 2));
+                uint32_t sum = (uint32_t)(2 * pow((double)(abs(outOfBound) >> 2), 2));
                 index += sum;
             }
             *count = cuLoc->evenRowIndex;
